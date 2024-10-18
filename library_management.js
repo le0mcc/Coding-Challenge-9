@@ -25,3 +25,30 @@ class Book {
         this.#_isAvailable = availability;
     };
 };
+
+// Task 2: Create a Section Class
+class Section {
+    constructor(name, books) {
+        this.name = name;
+        this.books = books;
+    };
+
+    addBook(book) {
+        this.books.push(book);
+    };
+
+    getAvailableBooks() {
+        const totalAvailable = this.books.reduce((sum, book) => {
+            if (book._isAvailable) {
+                return sum += 1;
+            };
+        },0);
+        return totalAvailable;
+    };
+
+    listBooks() {
+        for (let book of this.books) {
+            console.log(`${book.title}: Author: ${book.author}\nAvailable: ${book.availability}`)
+        }
+    };
+};
