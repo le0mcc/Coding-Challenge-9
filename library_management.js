@@ -51,4 +51,14 @@ class Section {
             console.log(`${book.title}: Author: ${book.author}\nAvailable: ${book.availability}`)
         }
     };
+
+    // Task 5: Handle Books Borrowing and Returning
+    calculateTotalBooksAvailable() {
+        const totalBooksAvailable = this.books.reduce((sum, book) => {
+            if (book._isAvailable) {
+                return sum += 1;
+            };
+        },0);
+        return totalBooksAvailable;
+    };
 };
