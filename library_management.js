@@ -2,31 +2,26 @@
 
 // Task 1: Create a Book Class
 class Book {
-    constructor (title, author, ISBN, _isAvailable) {
+    #_isAvailable;
+    constructor (title, author, ISBN) {
         this.title = title;
         this.author = author;
         this.ISBN = ISBN;
-        this._isAvailable = _isAvailable;
+        this.#_isAvailable = true;
     };
 
-    // get and log details into the console
+    // get and return details
     getDetails() {
-        console.log(`Book: ${this.title}\nAuthor: ${this.author}\nISBN: ${this.ISBN}\nAvailable: ${this._isAvailable}`)
-        return this._isAvailable
+        return `Book: ${this.title}\nAuthor: ${this.author}\nISBN: ${this.ISBN}\nAvailable: ${this.#_isAvailable}`;
     };
 
-    // update availability using setter method
-    setAvailability(availability) {
-        if (this._isAvailable != null) {
-            this._isAvailable = availability;
-        }
-        else {
-            console.log("Please enter a value.")
-        };
+    // use getter to return availability
+    get _isAvailable() {
+        return this.#_isAvailable;
     };
-}
 
-// example data
-const cmbyn = new Book ("Call Me By Your Name", "Andre Aciman", 1, "true");
-console.log(cmbyn);
-
+    // use setter to change availability
+    set _isAvailable(availability) {
+        this.#_isAvailable = availability;
+    };
+};
