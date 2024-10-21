@@ -21,9 +21,14 @@ class Book {
         return this.#_isAvailable;
     };
 
-    // Ue setter to change availability
+    // Use setter to change availability
     set _isAvailable(availability) {
-        this.#_isAvailable = availability;
+        if (typeof availability === 'boolean') {
+            this.#_isAvailable = availability;
+        }
+        else {
+            console.log("Invalid availability. Must be true or false.")
+        };
     };
 };
 
